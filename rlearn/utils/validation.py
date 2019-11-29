@@ -83,7 +83,7 @@ def check_oversamplers_classifiers(oversamplers, classifiers, random_state, n_ru
         ovs_name, ovs, ovs_param_grid = oversampler
         clf_name, clf, clf_param_grid = classifier
         if ovs is None:
-            ovs = FunctionTransformer()
+            ovs = FunctionTransformer(validate=True)
 
         # Create estimator
         name = f'{ovs_name}|{clf_name}'
