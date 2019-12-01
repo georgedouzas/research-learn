@@ -77,8 +77,14 @@ class MultiEstimatorMixin(_BaseComposition):
         # Copy one of the estimators
         estimator = clone(dict(self.estimators)[self.est_name])
 
+        # check fit_params
+        _fit_params = {}
+        for name, param in fit_params.items():
+            if name.split('__')[0] in self.est_name:
+                _fit_params[name] = param
+
         # Fit estimator
-        self.estimator_ = estimator.fit(X, y, **fit_params)
+        self.estimator_ = estimator.fit(X, y, **_fit_params)
 
         return self
 
