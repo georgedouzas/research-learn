@@ -370,7 +370,7 @@ class ModelSearchCV(GridSearchCV):
         verbose=0,
         pre_dispatch='2*n_jobs',
         error_score='raise',
-        return_train_score=True,
+        return_train_score=False,
     ):
         estimator = (
             MultiClassifier(estimators)
